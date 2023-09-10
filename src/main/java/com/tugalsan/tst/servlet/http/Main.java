@@ -10,7 +10,6 @@ public class Main {
 
     //HOW TO EXECUTE
     public static void main(String[] args) {
-        //TS_SHttpsServerSimple.main(args);
         TS_SHttpServer.startHttpsServlet("localhost", 8081,
                 Path.of("D:\\xampp_data\\SSL\\tomcat.p12"), "MyPass",
                 Path.of("D:\\file"),
