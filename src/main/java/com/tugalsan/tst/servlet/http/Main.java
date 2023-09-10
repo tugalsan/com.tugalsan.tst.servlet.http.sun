@@ -22,8 +22,7 @@ public class Main {
         var customTextHandler = TS_SHttpHandlerText.of("/", allow, httpExchange -> {
             var uri = httpExchange.getRequestURI();
             var parser = TGS_UrlParser.of(TGS_Url.of(uri.toString()));
-
-            return TGS_Tuple2.of(TGS_FileTypes.txt_utf8, parser.toString());
+            return TGS_Tuple2.of(TGS_FileTypes.htm_utf8, uri.toString() + "<br>" + parser.toString());
         });
         var network = TS_SHttpConfigNetwork.of("localhost", 8081);
         var ssl = TS_SHttpConfigSSL.of(Path.of("D:\\xampp_data\\SSL\\tomcat.p12"), "MyPass");
