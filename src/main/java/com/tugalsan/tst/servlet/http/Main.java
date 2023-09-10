@@ -9,7 +9,6 @@ import java.nio.file.Path;
 public class Main {
 
     //HOW TO EXECUTE
-    //C:\me\codes\com.tugalsan\tst\com.tugalsan.tst.servlet.http>target\bin\webapp.bat
     public static void main(String[] args) {
         //TS_SHttpsServerSimple.main(args);
         TS_SHttpServer.startHttpsServlet("localhost", 8081,
