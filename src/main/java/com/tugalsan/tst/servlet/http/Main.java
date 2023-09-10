@@ -7,6 +7,7 @@ import com.tugalsan.api.servlet.http.server.TS_SHttpConfigSSL;
 import com.tugalsan.api.servlet.http.server.TS_SHttpHandlerText;
 import com.tugalsan.api.servlet.http.server.TS_SHttpServer;
 import com.tugalsan.api.tuple.client.TGS_Tuple2;
+import com.tugalsan.api.url.client.TGS_Url;
 import com.tugalsan.api.url.client.parser.TGS_UrlParser;
 import com.tugalsan.api.validator.client.TGS_ValidatorType1;
 import java.nio.file.Path;
@@ -18,8 +19,11 @@ public class Main {
     //HOW TO EXECUTE
     public static void main(String[] args) {
         TGS_ValidatorType1<TGS_UrlParser> allow = parser -> true;
-        var customTextHandler = TS_SHttpHandlerText.of("/", allow, parser -> {
-            return TGS_Tuple2.of(TGS_FileTypes.txt_utf8, "ali gel ğüĞÜöçÖÇşiŞİıI");
+        var customTextHandler = TS_SHttpHandlerText.of("/", allow, httpExchange -> {
+            var uri = httpExchange.getRequestURI();
+            var parser = TGS_UrlParser.of(TGS_Url.of(uri.toString()));
+
+            return TGS_Tuple2.of(TGS_FileTypes.txt_utf8, parser.toString());
         });
         var network = TS_SHttpConfigNetwork.of("localhost", 8081);
         var ssl = TS_SHttpConfigSSL.of(Path.of("D:\\xampp_data\\SSL\\tomcat.p12"), "MyPass");
