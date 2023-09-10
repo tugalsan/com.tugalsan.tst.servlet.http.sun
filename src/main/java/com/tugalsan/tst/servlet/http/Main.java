@@ -17,10 +17,8 @@ public class Main {
 
     //HOW TO EXECUTE
     public static void main(String[] args) {
-        TGS_ValidatorType1<TGS_UrlParser> allow = parser -> {
-            return true;
-        };
-        var customTextHandler = TS_SHttpHandlerText.of("/", parser -> {
+        TGS_ValidatorType1<TGS_UrlParser> allow = parser -> true;
+        var customTextHandler = TS_SHttpHandlerText.of("/", allow, parser -> {
             return TGS_Tuple2.of(TGS_FileTypes.txt_utf8, "ali gel ğüĞÜöçÖÇşiŞİıI");
         });
         var network = TS_SHttpConfigNetwork.of("localhost", 8081);
