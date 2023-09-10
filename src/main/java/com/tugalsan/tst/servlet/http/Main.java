@@ -15,7 +15,7 @@ public class Main {
         //TS_SHttpsServerSimple.main(args);
         TS_SHttpServer.startHttpsServlet("localhost", 8081,
                 Path.of("D:\\xampp_data\\SSL\\tomcat.p12"), "MyPass",
-                Path.of("D:\\xampp_data\\SSL\\"),
+                Path.of("D:\\file"),
                 TS_SHttpHandlerText.of("/", he -> {
                     return TGS_Tuple2.of(TGS_FileTypes.txt_utf8, "ali gel ğüĞÜöçÖÇşiŞİıI");
                 })
