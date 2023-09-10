@@ -1,6 +1,5 @@
 package com.tugalsan.tst.servlet.http;
 
-import com.sun.net.httpserver.SimpleFileServer;
 import com.tugalsan.api.file.client.TGS_FileTypes;
 import com.tugalsan.api.servlet.http.server.TS_SHttpHandlerText;
 import com.tugalsan.api.servlet.http.server.TS_SHttpServer;
