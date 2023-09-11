@@ -17,6 +17,9 @@ public class Main {
     final private static TS_Log d = TS_Log.of(true, Main.class);
 
     //HOW TO EXECUTE
+    //WHEN RUNNING IN NETBEANS, ALL DEPENDENCIES SHOULD HAVE TARGET FOLDER!
+    //cd C:\me\codes\com.tugalsan\tst\com.tugalsan.tst.serialcom
+    //java --enable-preview --add-modules jdk.incubator.vector -jar target/com.tugalsan.tst.serialcom-1.0-SNAPSHOT-jar-with-dependencies.jar    
     public static void main(String[] args) {
         TGS_ValidatorType1<TGS_UrlParser> allow = parser -> true;
         var customTextHandler = TS_SHttpHandlerText.of("/", allow, httpExchange -> {
