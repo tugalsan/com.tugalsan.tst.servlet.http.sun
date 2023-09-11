@@ -6,6 +6,7 @@ import com.tugalsan.api.servlet.http.server.TS_SHttpConfigNetwork;
 import com.tugalsan.api.servlet.http.server.TS_SHttpConfigSSL;
 import com.tugalsan.api.servlet.http.server.TS_SHttpHandlerText;
 import com.tugalsan.api.servlet.http.server.TS_SHttpServer;
+import com.tugalsan.api.servlet.http.server.TS_SHttpUtils;
 import com.tugalsan.api.tuple.client.TGS_Tuple2;
 import com.tugalsan.api.url.client.TGS_Url;
 import com.tugalsan.api.url.client.parser.TGS_UrlParser;
@@ -23,7 +24,12 @@ public class Main {
     public static void main(String[] args) {
         TGS_ValidatorType1<TGS_UrlParser> allow = parser -> true;
         var customTextHandler = TS_SHttpHandlerText.of("/", allow, httpExchange -> {
-            var uri = httpExchange.getRequestURI();
+            var uri = TS_SHttpUtils.getURI(httpExchange).orElse(null);
+            if (uri == null) {
+                d.ce("main", "ERROR url base null");
+                TS_SHttpUtils.sendError404(httpExchange);
+                return null;
+            }
             var parser = TGS_UrlParser.of(TGS_Url.of(uri.toString()));
             return TGS_Tuple2.of(TGS_FileTypes.htm_utf8, uri.toString() + "<br>" + parser.toString());
         });
