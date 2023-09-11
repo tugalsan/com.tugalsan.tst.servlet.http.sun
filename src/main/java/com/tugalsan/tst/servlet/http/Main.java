@@ -28,7 +28,7 @@ public class Main {
             return TGS_Tuple2.of(TGS_FileTypes.htm_utf8, uri.toString() + "<br>" + parser.toString());
         });
         var network = TS_SHttpConfigNetwork.of("localhost", 8081);
-        var ssl = TS_SHttpConfigSSL.of(Path.of("D:\\xampp_data\\SSL\\tomcat.p12"), "MyPass");
+        var ssl = TS_SHttpConfigSSL.of(Path.of("D:\\xampp_data\\SSL\\tomcat.p12"), "MyPass", true);
         var folder = Path.of("D:\\file");
         TS_SHttpServer.startHttpsServlet(network, ssl, allow, folder, customTextHandler);
     }
