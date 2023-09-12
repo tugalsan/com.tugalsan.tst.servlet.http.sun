@@ -8,7 +8,6 @@ import com.tugalsan.api.servlet.http.server.TS_SHttpHandlerRequest;
 import com.tugalsan.api.servlet.http.server.TS_SHttpHandlerText;
 import com.tugalsan.api.servlet.http.server.TS_SHttpServer;
 import com.tugalsan.api.tuple.client.TGS_Tuple2;
-import com.tugalsan.api.url.client.parser.TGS_UrlParser;
 import com.tugalsan.api.validator.client.TGS_ValidatorType1;
 
 public class Main {
