@@ -26,7 +26,7 @@ public class Main {
                 request.sendError404("ERROR: i am grumpy, and will work only localhost 😠");
                 return null;
             }
-            return TGS_Tuple2.of(TGS_FileTypes.htm_utf8, request.url.toString());
+            return TGS_Tuple2.of(TGS_FileTypes.htm_utf8, "<html><head><script>location.reload();</script></head><body>" + request.url + "<body></html>");
         });
         var network = TS_SHttpConfigNetwork.of(settings.ip, settings.sslPort);
         var ssl = TS_SHttpConfigSSL.of(settings.sslPath, settings.sslPass, settings.redirectToSSL);
