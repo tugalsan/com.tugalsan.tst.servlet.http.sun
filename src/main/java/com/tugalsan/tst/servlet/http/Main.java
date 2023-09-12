@@ -31,7 +31,7 @@ public class Main {
                 return null;
             }
             if (!TS_SHttpUtils.isLocal(httpExchange)) {
-                d.ce("main", "ERROR i am gupy, and will work only localhost 😠");
+                d.ce("main", "ERROR i am grumpy, and will work only localhost 😠");
                 TS_SHttpUtils.sendError404(httpExchange);
                 return null;
             }
