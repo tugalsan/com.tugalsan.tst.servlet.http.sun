@@ -1,6 +1,5 @@
 package com.tugalsan.tst.servlet.http;
 
-import com.tugalsan.api.file.client.TGS_FileTypes;
 import com.tugalsan.api.file.client.*;
 import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.servlet.http.server.*;
