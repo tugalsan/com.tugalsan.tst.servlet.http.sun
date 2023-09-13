@@ -18,13 +18,15 @@ public class Main {
     public static void main(String[] args) {
         var settings = Settings.of(Settings.pathDefault());
         TGS_ValidatorType1<TS_SHttpHandlerRequest> allow = request -> {
+            d.ci("isAllowed", "hello");
             if (!request.isLocal()) {
-                request.sendError404("ERROR: Will work only localhost 😠");
+                request.sendError404("allow", "ERROR: Will work only localhost 😠");
                 return false;
             }
             return true;
         };
-        var stringHandler = TS_SHttpHandlerString.of("/", allow, request -> {
+        var customHandler = TS_SHttpHandlerString.of("/", allow, request -> {
+            d.ci("customHandler", "hello");
             return TGS_Tuple2.of(TGS_FileTypes.htm_utf8, TGS_StringUtils.concat(
                     "<html><head><script>location.reload();</script></head><body>",
                     request.url.toString(),
@@ -35,7 +37,7 @@ public class Main {
                 TS_SHttpConfigNetwork.of(settings.ip, settings.sslPort),
                 TS_SHttpConfigSSL.of(settings.sslPath, settings.sslPass, settings.redirectToSSL),
                 TS_SHttpConfigHandlerFile.of(settings.fileHandlerServletName, allow, settings.fileHandlerRoot),
-                stringHandler
+                customHandler
         );
     }
 }
