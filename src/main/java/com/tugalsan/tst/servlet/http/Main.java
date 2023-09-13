@@ -10,7 +10,6 @@ import com.tugalsan.api.validator.client.*;
 public class Main {
 
     final private static TS_Log d = TS_Log.of(true, Main.class);
-    //api fixed!
 
     //HOW TO EXECUTE
     //WHEN RUNNING IN NETBEANS, ALL DEPENDENCIES SHOULD HAVE TARGET FOLDER!
