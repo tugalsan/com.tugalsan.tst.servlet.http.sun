@@ -1,5 +1,6 @@
 package com.tugalsan.tst.servlet.http;
 
+import com.tugalsan.api.crypto.client.TGS_CryptUtils;
 import com.tugalsan.api.file.client.*;
 import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.servlet.http.server.*;
@@ -25,8 +26,15 @@ public class Main {
             }
             return true;
         };
-        var customHandler = TS_SHttpHandlerString.of("/", allow, request -> {
-            d.ci("customHandler", "hello");
+        var byteHandler = TS_SHttpHandlerByte.of("/byte", allow, request -> {
+            d.ci("byteHandler", "hello");
+            return TGS_Tuple2.of(
+                    TGS_FileTypes.jpeg,
+                    TGS_CryptUtils.decrypt64_toBytes(FileExampleJpg.base64())
+            );
+        }, settings.onHandlerString_removeHiddenChars);
+        var stringHandler = TS_SHttpHandlerString.of("/", allow, request -> {
+            d.ci("stringHandler", "hello");
             return TGS_Tuple2.of(TGS_FileTypes.htm_utf8, TGS_StringUtils.concat(
                     "<html><head><script>location.reload();</script></head><body>",
                     request.url.toString(),
@@ -37,7 +45,7 @@ public class Main {
                 TS_SHttpConfigNetwork.of(settings.ip, settings.sslPort),
                 TS_SHttpConfigSSL.of(settings.sslPath, settings.sslPass, settings.redirectToSSL),
                 TS_SHttpConfigHandlerFile.of(settings.fileHandlerServletName, allow, settings.fileHandlerRoot, settings.onHandlerFile_filterUrlsWithHiddenChars),
-                customHandler
+                byteHandler, stringHandler
         );
     }
 }
