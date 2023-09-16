@@ -20,13 +20,13 @@ public class Settings {
         var propsExists = TS_FileUtils.isExistFile(propsFile);
         var props = propsExists ? TS_FilePropertiesUtils.read(propsFile) : new Properties();
 
-        var onHandlerFile_filterUrlsWithHiddenCharsStr = TS_FilePropertiesUtils.getValue(props, "com.tugalsan.gvm.cloud.Main_onHandlerFile_filterUrlsWithHiddenChars", "true");
-        d.ci("construtor", "onHandlerFile_filterUrlsWithHiddenChars", onHandlerFile_filterUrlsWithHiddenCharsStr);
-        onHandlerFile_filterUrlsWithHiddenChars = TGS_UnSafe.call((() -> Boolean.valueOf(onHandlerFile_filterUrlsWithHiddenCharsStr)), e -> TGS_UnSafe.thrwReturns(new RuntimeException("ERROR for onHandlerFile_filterUrlsWithHiddenCharsStr: Cannot convert String to Boolean: " + onHandlerFile_filterUrlsWithHiddenCharsStr)));
+        var fileHandler_filterUrlsWithHiddenCharsStr = TS_FilePropertiesUtils.getValue(props, "com.tugalsan.gvm.cloud.Main_fileHandler_filterUrlsWithHiddenChars", "true");
+        d.ci("construtor", "fileHandler_filterUrlsWithHiddenChars", fileHandler_filterUrlsWithHiddenCharsStr);
+        fileHandler_filterUrlsWithHiddenChars = TGS_UnSafe.call((() -> Boolean.valueOf(fileHandler_filterUrlsWithHiddenCharsStr)), e -> TGS_UnSafe.thrwReturns(new RuntimeException("ERROR for fileHandler_filterUrlsWithHiddenCharsStr: Cannot convert String to Boolean: " + fileHandler_filterUrlsWithHiddenCharsStr)));
 
-        var onHandlerCustom_removeHiddenCharsStr = TS_FilePropertiesUtils.getValue(props, "com.tugalsan.gvm.cloud.Main_onHandlerString_removeHiddenChars", "true");
-        d.ci("construtor", "onHandlerCustom_removeHiddenCharsStr", onHandlerCustom_removeHiddenCharsStr);
-        onHandlerCustom_removeHiddenChars = TGS_UnSafe.call((() -> Boolean.valueOf(onHandlerCustom_removeHiddenCharsStr)), e -> TGS_UnSafe.thrwReturns(new RuntimeException("ERROR for onHandlerCustom_removeHiddenCharsStr: Cannot convert String to Boolean: " + onHandlerCustom_removeHiddenCharsStr)));
+        var customHandler_removeHiddenCharsStr = TS_FilePropertiesUtils.getValue(props, "com.tugalsan.gvm.cloud.Main_customHandler_removeHiddenChars", "true");
+        d.ci("construtor", "onHandlerCustom_removeHiddenCharsStr", customHandler_removeHiddenCharsStr);
+        customHandler_removeHiddenChars = TGS_UnSafe.call((() -> Boolean.valueOf(customHandler_removeHiddenCharsStr)), e -> TGS_UnSafe.thrwReturns(new RuntimeException("ERROR for customHandler_removeHiddenChars: Cannot convert String to Boolean: " + customHandler_removeHiddenCharsStr)));
 
         ip = TS_FilePropertiesUtils.getValue(props, "com.tugalsan.gvm.cloud.Main_ip", "localhost");
         d.ci("construtor", "ip", ip);
@@ -57,7 +57,7 @@ public class Settings {
             TS_FilePropertiesUtils.write(props, propsFile);
         }
     }
-    final public boolean redirectToSSL, onHandlerCustom_removeHiddenChars, onHandlerFile_filterUrlsWithHiddenChars;
+    final public boolean redirectToSSL, customHandler_removeHiddenChars, fileHandler_filterUrlsWithHiddenChars;
     final public int sslPort;
     final public Path sslPath, fileHandlerRoot;
     final public String ip, sslPass, fileHandlerServletName;
