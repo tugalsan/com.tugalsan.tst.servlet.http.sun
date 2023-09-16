@@ -30,14 +30,28 @@ public class Main {
             d.ci("byteHandler", "hello");
             return TGS_Tuple2.of(
                     TGS_FileTypes.jpeg,
-                    TGS_CryptUtils.decrypt64_toBytes(FileExampleJpg.base64())
+                    TGS_CryptUtils.decrypt64_toBytes(Resources.base64())
             );
         }, settings.onHandlerString_removeHiddenChars);
         var stringHandler = TS_SHttpHandlerString.of("/", allow, request -> {
             d.ci("stringHandler", "hello");
+            var urlJpg = request.url.cloneIt();
+            urlJpg.path.fileOrServletName = "byte";
+            urlJpg.path.paths.clear();
             return TGS_Tuple2.of(TGS_FileTypes.htm_utf8, TGS_StringUtils.concat(
-                    "<html><head><script>location.reload();</script></head><body>",
-                    request.url.toString(),
+                    "<html><head><style>",
+                    "html, body {",
+                    "   height: 100%;",
+                    "}",
+                    "body {",
+                    "   background-image: url(",
+                    urlJpg.toString(),
+                    ");",
+                    "   background-repeat: no-repeat;",
+                    "   background-size: contain;",
+                    "}",
+                    "</style></head><body>",
+                    "Hello html",
                     "<body></html>"
             ));
         }, settings.onHandlerString_removeHiddenChars);
