@@ -24,9 +24,9 @@ public class Settings {
         d.ci("construtor", "onHandlerFile_filterUrlsWithHiddenChars", onHandlerFile_filterUrlsWithHiddenCharsStr);
         onHandlerFile_filterUrlsWithHiddenChars = TGS_UnSafe.call((() -> Boolean.valueOf(onHandlerFile_filterUrlsWithHiddenCharsStr)), e -> TGS_UnSafe.thrwReturns(new RuntimeException("ERROR for onHandlerFile_filterUrlsWithHiddenCharsStr: Cannot convert String to Boolean: " + onHandlerFile_filterUrlsWithHiddenCharsStr)));
 
-        var onHandlerString_removeHiddenCharsStr = TS_FilePropertiesUtils.getValue(props, "com.tugalsan.gvm.cloud.Main_onHandlerString_removeHiddenChars", "true");
-        d.ci("construtor", "onHandlerString_removeHiddenCharsStr", onHandlerString_removeHiddenCharsStr);
-        onHandlerString_removeHiddenChars = TGS_UnSafe.call((() -> Boolean.valueOf(onHandlerString_removeHiddenCharsStr)), e -> TGS_UnSafe.thrwReturns(new RuntimeException("ERROR for onHandlerString_removeHiddenCharsStr: Cannot convert String to Boolean: " + onHandlerString_removeHiddenCharsStr)));
+        var onHandlerCustom_removeHiddenCharsStr = TS_FilePropertiesUtils.getValue(props, "com.tugalsan.gvm.cloud.Main_onHandlerString_removeHiddenChars", "true");
+        d.ci("construtor", "onHandlerCustom_removeHiddenCharsStr", onHandlerCustom_removeHiddenCharsStr);
+        onHandlerCustom_removeHiddenChars = TGS_UnSafe.call((() -> Boolean.valueOf(onHandlerCustom_removeHiddenCharsStr)), e -> TGS_UnSafe.thrwReturns(new RuntimeException("ERROR for onHandlerCustom_removeHiddenCharsStr: Cannot convert String to Boolean: " + onHandlerCustom_removeHiddenCharsStr)));
 
         ip = TS_FilePropertiesUtils.getValue(props, "com.tugalsan.gvm.cloud.Main_ip", "localhost");
         d.ci("construtor", "ip", ip);
@@ -57,7 +57,7 @@ public class Settings {
             TS_FilePropertiesUtils.write(props, propsFile);
         }
     }
-    final public boolean redirectToSSL, onHandlerString_removeHiddenChars, onHandlerFile_filterUrlsWithHiddenChars;
+    final public boolean redirectToSSL, onHandlerCustom_removeHiddenChars, onHandlerFile_filterUrlsWithHiddenChars;
     final public int sslPort;
     final public Path sslPath, fileHandlerRoot;
     final public String ip, sslPass, fileHandlerServletName;

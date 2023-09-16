@@ -32,7 +32,7 @@ public class Main {
                     TGS_FileTypes.jpeg,
                     TGS_CryptUtils.decrypt64_toBytes(Resources.base64())
             );
-        }, settings.onHandlerString_removeHiddenChars);
+        }, settings.onHandlerCustom_removeHiddenChars);
         var stringHandler = TS_SHttpHandlerString.of("/", allow, request -> {
             d.ci("stringHandler", "hello");
             var urlJpg = request.url.cloneIt();
@@ -54,7 +54,7 @@ public class Main {
                     "Hello html",
                     "<body></html>"
             ));
-        }, settings.onHandlerString_removeHiddenChars);
+        }, settings.onHandlerCustom_removeHiddenChars);
         TS_SHttpServer.of(
                 TS_SHttpConfigNetwork.of(settings.ip, settings.sslPort),
                 TS_SHttpConfigSSL.of(settings.sslPath, settings.sslPass, settings.redirectToSSL),
