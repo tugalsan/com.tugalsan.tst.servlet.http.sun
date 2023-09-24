@@ -20,7 +20,7 @@ public class Main {
         var settings = Settings.of(Settings.pathDefault());
         TGS_ValidatorType1<TS_SHttpHandlerRequest> allow = request -> {
             d.ci("isAllowed", "hello");
-            if (!request.isLocal()) {
+            if (!request.isLocalClient()) {
                 request.sendError404("allow", "ERROR: Will work only localhost 😠");
                 return false;
             }
