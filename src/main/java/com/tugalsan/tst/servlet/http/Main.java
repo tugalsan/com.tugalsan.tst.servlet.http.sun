@@ -19,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         var settings = Settings.of(Settings.pathDefault());
         TGS_ValidatorType1<TS_SHttpHandlerRequest> allow = request -> {
-            d.ci("isAllowed", "hello");
+            d.ci("allow", "hello");
             if (!request.isLocalClient()) {
                 request.sendError404("allow", "ERROR: Will work only localhost 😠");
                 return false;
@@ -30,7 +30,7 @@ public class Main {
             d.ci("byteHandler", "hello");
             return TGS_Tuple2.of(
                     TGS_FileTypes.jpeg,
-                    TGS_CryptUtils.decrypt64_toBytes(Resources.base64())
+                    TGS_CryptUtils.decrypt64_toBytes(TS_SHttpUtils.testJpgBase64())
             );
         }, settings.customHandler_removeHiddenChars);
         var stringHandler = TS_SHttpHandlerString.of("/", allow, request -> {
