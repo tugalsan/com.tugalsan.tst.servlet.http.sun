@@ -16,8 +16,13 @@ public class Main {
     //WHEN RUNNING IN NETBEANS, ALL DEPENDENCIES SHOULD HAVE TARGET FOLDER!
     //cd C:\me\codes\com.tugalsan\tst\com.tugalsan.tst.serialcom
     //java --enable-preview --add-modules jdk.incubator.vector -jar target/com.tugalsan.tst.serialcom-1.0-SNAPSHOT-jar-with-dependencies.jar    
+    
+    //ERROR: {TS_SHttpServer}, {of}, {ERROR CAUSE: 'java.lang.NullPointerException: Cannot invoke "com.sun.net.httpserver.HttpServer.createContext(String, com.sun.net.httpserver.HttpHandler)" because "httpServer" is null'
+    
     public static void main(String[] args) {
-        var settings = Settings.of(Settings.pathDefault());
+        var settingsLoc = Settings.pathDefault();
+        d.cr("main", "settingsLoc", settingsLoc);
+        var settings = Settings.of(settingsLoc);
         TGS_Func_OutBool_In1<TS_SHttpHandlerRequest> allow = request -> {
             d.ci("allow", "hello");
             if (!request.isLocalClient()) {
