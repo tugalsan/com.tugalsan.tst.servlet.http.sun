@@ -2,11 +2,11 @@ package com.tugalsan.tst.servlet.http;
 
 import com.tugalsan.api.crypto.client.TGS_CryptUtils;
 import com.tugalsan.api.file.client.*;
+import com.tugalsan.api.function.client.TGS_Func_OutBool_In1;
 import com.tugalsan.api.log.server.*;
 import com.tugalsan.api.servlet.http.server.*;
 import com.tugalsan.api.string.client.*;
 import com.tugalsan.api.tuple.client.*;
-import com.tugalsan.api.validator.client.*;
 
 public class Main {
 
@@ -18,7 +18,7 @@ public class Main {
     //java --enable-preview --add-modules jdk.incubator.vector -jar target/com.tugalsan.tst.serialcom-1.0-SNAPSHOT-jar-with-dependencies.jar    
     public static void main(String[] args) {
         var settings = Settings.of(Settings.pathDefault());
-        TGS_ValidatorType1<TS_SHttpHandlerRequest> allow = request -> {
+        TGS_Func_OutBool_In1<TS_SHttpHandlerRequest> allow = request -> {
             d.ci("allow", "hello");
             if (!request.isLocalClient()) {
                 request.sendError404("allow", "ERROR: Will work only localhost 😠");
@@ -38,7 +38,7 @@ public class Main {
             var urlJpg = request.url.cloneIt();
             urlJpg.path.fileOrServletName = "byte";
             urlJpg.path.paths.clear();
-            return TGS_Tuple2.of(TGS_FileTypes.htm_utf8, TGS_StringUtils.concat(
+            return TGS_Tuple2.of(TGS_FileTypes.htm_utf8, TGS_StringUtils.cmn().concat(
                     "<html><head><style>",
                     "html, body {",
                     "   height: 100%;",
