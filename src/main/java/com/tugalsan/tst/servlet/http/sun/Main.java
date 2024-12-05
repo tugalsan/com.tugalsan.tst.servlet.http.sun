@@ -1,10 +1,10 @@
 package com.tugalsan.tst.servlet.http.sun;
 
-import com.tugalsan.api.crypto.client.TGS_CryptUtils;
+import com.tugalsan.api.crypto.client.*;
 import com.tugalsan.api.file.client.*;
-import com.tugalsan.api.function.client.TGS_Func_OutBool_In1;
+import com.tugalsan.api.function.client.*;
 import com.tugalsan.api.log.server.*;
-import com.tugalsan.api.servlet.http.server.*;
+import com.tugalsan.api.servlet.http.sun.server.*;
 import com.tugalsan.api.string.client.*;
 import com.tugalsan.api.tuple.client.*;
 

@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>${project.groupId}</groupId>
-            <artifactId>com.tugalsan.api.servlet.http</artifactId>
+            <artifactId>com.tugalsan.lib.servlet.http.sun</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
